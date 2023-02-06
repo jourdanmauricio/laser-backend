@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 const express = require('express');
 const passport = require('passport');
 const { checkAdminRole } = require('./../middlewares/auth.handler');
@@ -10,6 +12,13 @@ const {
   createSettingSchema,
   // getSettingSchema,
 } = require('./../schemas/setting.schema');
+
+const URL_REVALIDATE = `${config.apiFrontend}/revalidate`;
+const CONFIG_REVALIDATE = {
+  headers: {
+    revalidate: config.revalidateToken,
+  },
+};
 
 const router = express.Router();
 const service = new SettingService();
@@ -52,6 +61,9 @@ router.post(
     try {
       const body = req.body;
       const newCategory = await service.create(body);
+
+      await axios(URL_REVALIDATE, CONFIG_REVALIDATE);
+
       res.status(201).json(newCategory);
     } catch (error) {
       next(error);
@@ -85,6 +97,9 @@ router.put(
     try {
       const { data } = req.body;
       const setting = await service.updateAll(data);
+
+      await axios(URL_REVALIDATE, CONFIG_REVALIDATE);
+
       res.json(setting);
     } catch (error) {
       next(error);

@@ -1,3 +1,6 @@
+const axios = require('axios');
+
+const { config } = require('../config/config');
 const express = require('express');
 const passport = require('passport');
 
@@ -12,6 +15,13 @@ const {
 
 const router = express.Router();
 const lessonService = new LessonService();
+
+const URL_REVALIDATE = `${config.apiFrontend}/revalidate`;
+const CONFIG_REVALIDATE = {
+  headers: {
+    revalidate: config.revalidateToken,
+  },
+};
 
 router.get('/', async (req, res, next) => {
   try {
@@ -64,6 +74,9 @@ router.post(
   async (req, res) => {
     const body = req.body;
     const newLesson = await lessonService.create(body);
+
+    await axios(URL_REVALIDATE, CONFIG_REVALIDATE);
+
     res.status(201).json(newLesson);
   }
 );
@@ -80,6 +93,9 @@ router.put(
       const body = req.body;
 
       const lesson = await lessonService.update(id, body);
+
+      await axios(URL_REVALIDATE, CONFIG_REVALIDATE);
+
       res.status(200).json(lesson);
     } catch (error) {
       next(error);
@@ -95,6 +111,9 @@ router.delete(
   async (req, res) => {
     const { id } = req.params;
     const rta = await lessonService.delete(id);
+
+    await axios(URL_REVALIDATE, CONFIG_REVALIDATE);
+
     res.status(200).json(rta);
   }
 );

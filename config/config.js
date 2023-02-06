@@ -4,14 +4,8 @@ const config = {
   env: process.env.NODE_ENV || 'dev',
   isProd: process.env.NODE_ENV === 'production',
   port: process.env.PORT || 3000,
-  dbUser: process.env.DB_USER,
-  dbPassword: process.env.DB_PASSWORD,
-  dbHost: process.env.DB_HOST,
-  dbName: process.env.DB_NAME,
-  dbPort: process.env.DB_PORT,
 
-  dbUrl: process.env.DATABASE_URL,
-  apiKey: process.env.API_KEY,
+  revalidateToken: process.env.REVALIDATE_TOKEN,
   jwtSecret: process.env.JWT_SECRET,
 
   adminEmail: process.env.ADMIN_EMAIL,
@@ -22,6 +16,7 @@ const config = {
   superadminRole: process.env.SUPERADMIN_ROLE,
 
   domain: process.env.DOMAIN,
+  apiFrontend: process.env.API_FRONTEND,
 
   emailSend: process.env.EMAIL_SEND,
   emailSendPass: process.env.EMAIL_SEND_PASS,
