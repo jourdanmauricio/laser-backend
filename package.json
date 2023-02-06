@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "prod": "pm2 start index.js",
+    "prod": "pm2 start index.js --name 'yoga-backend'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint",
     "migrations:generate": "sequelize-cli migration:generate --name",
