@@ -16,12 +16,12 @@ module.exports = {
 
   development: {
     // url: URI,
-    storage: './db/hathayoga.sqlite',
+    storage: './db/laurarodriguez.sqlite',
     dialect: 'sqlite',
   },
   production: {
     // url: URI,
-    storage: './db/hathayoga.sqlite',
+    storage: './db/laurarodriguez.sqlite',
     dialect: 'sqlite',
     dialectOptions: {
       ssl: {

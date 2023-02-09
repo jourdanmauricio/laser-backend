@@ -30,8 +30,8 @@ class UserService {
   }
 
   async update(id, changes) {
-    const user = await this.findOne(id);
-    const rta = await user.update(changes);
+    const user2 = await this.findOne(id);
+    const rta = await user2.update(changes);
     return rta;
   }
 

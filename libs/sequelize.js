@@ -5,7 +5,7 @@ const setupModels = require('./../db/models');
 
 const options = {
   dialect: 'sqlite',
-  storage: './db/hathayoga.sqlite',
+  storage: './db/laurarodriguez.sqlite',
   logging: config.isProd ? false : console.log,
 };
 
@@ -17,7 +17,7 @@ if (config.isProd) {
   };
 }
 
-const sequelize = new Sequelize('hathayoga', 'user', 'pass', options);
+const sequelize = new Sequelize('laurarodriguez', 'user', 'pass', options);
 
 setupModels(sequelize);
 

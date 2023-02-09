@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const config = {
   env: process.env.NODE_ENV || 'dev',
+  adminFrontEnd: process.env.ADMIN_FRONTEND,
   isProd: process.env.NODE_ENV === 'production',
   port: process.env.PORT || 3000,
 
@@ -17,6 +18,9 @@ const config = {
 
   domain: process.env.DOMAIN,
   apiFrontend: process.env.API_FRONTEND,
+
+  mailerEmail: process.env.MAILER_EMAIL,
+  mailerPassword: process.env.MAILER_PASSWORD,
 
   emailSend: process.env.EMAIL_SEND,
   emailSendPass: process.env.EMAIL_SEND_PASS,

@@ -19,6 +19,10 @@ const UserSchema = {
     allowNull: false,
     type: DataTypes.STRING,
   },
+  recovery_token: {
+    allowNull: true,
+    type: DataTypes.STRING,
+  },
   role: {
     allowNull: false,
     type: DataTypes.STRING,
@@ -56,13 +60,13 @@ class User extends Model {
           const password = await bcrypt.hash(user.password, 10);
           user.password = password;
         },
-        beforeUpdate: async (user) => {
-          const password = await bcrypt.hash(user.password, 10);
-          user.password = password;
-        },
+        // beforeUpdate: async (user) => {
+        //   const password = await bcrypt.hash(user.password, 10);
+        //   user.password = password;
+        // },
       },
       defaultScope: {
-        attributes: { exclude: ['password'] },
+        // attributes: { exclude: ['password'] },
       },
       scopes: {
         withPassword: {
