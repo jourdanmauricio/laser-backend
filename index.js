@@ -11,7 +11,7 @@ const {
 } = require('./middlewares/error.handler');
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 // Middleware para recibir datos
 // json
