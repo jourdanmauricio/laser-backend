@@ -8,6 +8,7 @@ const {
   updateUserSchema,
   createUserSchema,
   getUserSchema,
+  updatePassUserSchema,
 } = require('./../schemas/user.schema');
 
 const router = express.Router();
@@ -87,6 +88,22 @@ router.delete(
       const { id } = req.params;
       await service.delete(id);
       res.status(201).json({ id });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.put(
+  '/change-password/:id',
+  passport.authenticate('jwt', { session: false }),
+  validatorHandler(updatePassUserSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const { id, newPassword } = req.body;
+
+      const rta = await service.updatePass(id, newPassword);
+      res.status(200).json(rta);
     } catch (error) {
       next(error);
     }

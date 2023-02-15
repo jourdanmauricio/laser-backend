@@ -1,31 +1,50 @@
-const bcrypt = require('bcrypt');
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
+const POST_TABLE = 'posts';
 const USER_TABLE = 'users';
 
-const UserSchema = {
+const PostSchema = {
   id: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER,
   },
-  email: {
+  title: {
     allowNull: false,
     type: DataTypes.STRING,
     unique: true,
   },
-  password: {
+  resume: {
     allowNull: false,
     type: DataTypes.STRING,
   },
-  recovery_token: {
+  content: {
+    allowNull: false,
+    type: DataTypes.TEXT,
+  },
+  image: {
+    allowNull: false,
+    type: DataTypes.STRING,
+  },
+  alt_image: {
+    allowNull: false,
+    type: DataTypes.STRING,
+  },
+  order: {
     allowNull: true,
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
   },
-  role: {
+  main: {
     allowNull: false,
-    type: DataTypes.STRING,
+    type: DataTypes.BOOLEAN,
+  },
+  user_id: {
+    allowNull: false,
+    type: DataTypes.INTEGER,
+    references: { model: USER_TABLE, key: 'ID' },
+    onUpdate: 'RESTRICT',
+    onDelete: 'RESTRICT',
   },
   createdAt: {
     allowNull: false,
@@ -41,44 +60,29 @@ const UserSchema = {
   },
 };
 
-class User extends Model {
+class Post extends Model {
   static associate(models) {
+    this.belongsTo(models.User, {
+      as: 'user',
+      foreignKey: 'user_id',
+    });
     //   this.hasOne(models.Customer, {
     //     as: 'customer',
     //     foreignKey: 'userId',
     //   });
-    this.hasMany(models.Post, {
-      as: 'posts',
-      foreignKey: 'user_id',
-    });
   }
 
   static config(sequelize) {
     return {
       sequelize,
-      tableName: USER_TABLE,
-      modelName: 'User',
+      tableName: POST_TABLE,
+      modelName: 'Post',
       timestamps: false,
-      hooks: {
-        beforeCreate: async (user) => {
-          const password = await bcrypt.hash(user.password, 10);
-          user.password = password;
-        },
-        // beforeUpdate: async (user) => {
-        //   const password = await bcrypt.hash(user.password, 10);
-        //   user.password = password;
-        // },
-      },
       defaultScope: {
-        // attributes: { exclude: ['password'] },
-      },
-      scopes: {
-        withPassword: {
-          attributes: {},
-        },
+        attributes: { exclude: ['createdAt', 'updatedAt'] },
       },
     };
   }
 }
 
-module.exports = { USER_TABLE, UserSchema, User };
+module.exports = { POST_TABLE, PostSchema, Post };

@@ -1,4 +1,5 @@
 const boom = require('@hapi/boom');
+const bcrypt = require('bcrypt');
 const { models } = require('../libs/sequelize');
 
 class UserService {
@@ -32,6 +33,12 @@ class UserService {
   async update(id, changes) {
     const user2 = await this.findOne(id);
     const rta = await user2.update(changes);
+    return rta;
+  }
+
+  async updatePass(id, newPassword) {
+    const hash = await bcrypt.hash(newPassword, 10);
+    const rta = await this.update(id, { password: hash });
     return rta;
   }
 

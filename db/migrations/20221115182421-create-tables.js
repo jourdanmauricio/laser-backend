@@ -111,7 +111,6 @@ module.exports = {
         defaultValue: Sequelize.NOW,
       },
     });
-
     await queryInterface.createTable(SUBSCRIBER_TABLE, {
       id: {
         allowNull: false,

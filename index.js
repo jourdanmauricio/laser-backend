@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const cors = require('cors');
 const routerApi = require('./routes');
@@ -13,14 +14,18 @@ const {
 const app = express();
 const port = 3001;
 
-// Middleware para recibir datos
-// json
+// Middleware para recibir datos json
 app.use(express.json());
 // files
 app.use(express.urlencoded({ extended: false }));
 
 // Server Static Files
 app.use('/static', express.static('public'));
+
+// app.use(bodyParser.json({ limit: '50mb' }));
+
+app.use(bodyParser.json({ limit: '10mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 // aceptamos cualquier origen
 app.use(cors());
