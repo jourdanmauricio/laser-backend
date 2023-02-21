@@ -15,6 +15,14 @@ const UserSchema = {
     type: DataTypes.STRING,
     unique: true,
   },
+  name: {
+    allowNull: true,
+    type: DataTypes.STRING,
+  },
+  image: {
+    allowNull: true,
+    type: DataTypes.STRING,
+  },
   password: {
     allowNull: false,
     type: DataTypes.STRING,
@@ -70,7 +78,7 @@ class User extends Model {
         // },
       },
       defaultScope: {
-        // attributes: { exclude: ['password'] },
+        attributes: { exclude: ['createdAt', 'updatedAt'] },
       },
       scopes: {
         withPassword: {

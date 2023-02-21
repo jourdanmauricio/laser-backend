@@ -25,6 +25,12 @@ const config = {
   emailSend: process.env.EMAIL_SEND,
   emailSendPass: process.env.EMAIL_SEND_PASS,
   emailTo: process.env.EMAIL_TO,
+
+  cloudinary: {
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.APP_SECRET,
+  },
 };
 
 module.exports = { config };

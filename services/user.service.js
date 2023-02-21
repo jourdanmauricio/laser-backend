@@ -31,8 +31,11 @@ class UserService {
   }
 
   async update(id, changes) {
-    const user2 = await this.findOne(id);
-    const rta = await user2.update(changes);
+    const user = await this.findOne(id);
+    const rta = await user.update(changes);
+    delete rta.dataValues.password;
+    delete rta.dataValues.updatedAt;
+    delete rta.dataValues.createdAt;
     return rta;
   }
 

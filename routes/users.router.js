@@ -69,9 +69,9 @@ router.put(
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const body = req.body;
-      const user = await service.update(id, body);
-      res.json(user);
+      const user = req.body;
+      const updUser = await service.update(id, user);
+      res.json(updUser);
     } catch (error) {
       next(error);
     }

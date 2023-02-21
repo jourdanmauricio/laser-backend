@@ -22,6 +22,10 @@ router.post(
       const token = jwt.sign(payload, config.jwtSecret);
       const userResponse = JSON.parse(JSON.stringify(user));
       userResponse.token = token;
+      delete userResponse.password;
+      delete userResponse.updatedAt;
+      delete userResponse.createdAt;
+
       res.json({
         user: userResponse,
       });

@@ -15,8 +15,12 @@ const PostSchema = {
     type: DataTypes.STRING,
     unique: true,
   },
-  resume: {
+  slug: {
     allowNull: false,
+    type: DataTypes.STRING,
+  },
+  resume: {
+    allowNull: true,
     type: DataTypes.STRING,
   },
   content: {
@@ -38,6 +42,11 @@ const PostSchema = {
   main: {
     allowNull: false,
     type: DataTypes.BOOLEAN,
+  },
+  created: {
+    allowNull: true,
+    type: DataTypes.DATE,
+    defaultValue: Sequelize.NOW,
   },
   user_id: {
     allowNull: false,

@@ -24,12 +24,27 @@ class PostService {
     return post;
   }
 
+  async findBySlug(slug) {
+    const post = await models.Post.findOne({
+      // include: ['user'],
+      include: [
+        {
+          model: models.User,
+          as: 'user',
+          attributes: ['name', 'image'],
+        },
+      ],
+      where: { slug },
+    });
+    if (!post) {
+      throw boom.notFound('Post not found');
+    }
+    return post;
+  }
+
   async update(id, changes) {
-    // console.log('UPD POST SERVICE');
     const post = await this.findOne(id);
-    // console.log('POST', post);
     const rta = await post.update(changes);
-    // console.log('RTA', rta);
     return rta;
   }
 

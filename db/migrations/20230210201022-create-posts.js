@@ -18,9 +18,13 @@ module.exports = {
         type: DataTypes.STRING,
         unique: true,
       },
-      resume: {
+      slug: {
         allowNull: false,
         type: DataTypes.STRING,
+      },
+      resume: {
+        allowNull: true,
+        type: DataTypes.TEXT,
       },
       content: {
         allowNull: false,
@@ -41,6 +45,11 @@ module.exports = {
       main: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
+      },
+      created: {
+        allowNull: true,
+        type: DataTypes.DATE,
+        defaultValue: Sequelize.NOW,
       },
       user_id: {
         allowNull: false,

@@ -12,7 +12,7 @@ const {
 } = require('./middlewares/error.handler');
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // Middleware para recibir datos json
 app.use(express.json());
@@ -24,8 +24,8 @@ app.use('/static', express.static('public'));
 
 // app.use(bodyParser.json({ limit: '50mb' }));
 
-app.use(bodyParser.json({ limit: '10mb', extended: true }));
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+app.use(bodyParser.json({ limit: '50mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // aceptamos cualquier origen
 app.use(cors());
