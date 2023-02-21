@@ -62,10 +62,7 @@ router.delete(
   // upload.single('image'),
   async (req, res, next) => {
     try {
-      console.log('body', req.body);
       const { public_id } = req.body;
-      console.log('public_id', public_id);
-      // const { id } = req.params;
       await service.deleteCloudinary(public_id);
 
       res.status(200).json({ image: 'deleted' });
