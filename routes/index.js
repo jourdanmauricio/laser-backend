@@ -8,6 +8,7 @@ const commentRouter = require('./comments.router');
 const settingRouter = require('./settings.router');
 const postsRouter = require('./posts.router');
 const imagesRouter = require('./images.router');
+const clinicsRouter = require('./clinics.router');
 
 function routerApi(app) {
   const router = express.Router();
@@ -20,6 +21,7 @@ function routerApi(app) {
   router.use('/settings', settingRouter);
   router.use('/posts', postsRouter);
   router.use('/images', imagesRouter);
+  router.use('/clinics', clinicsRouter);
 }
 
 module.exports = routerApi;

@@ -4,6 +4,7 @@ const { Subscriber, SubscriberSchema } = require('./subscriber.model');
 const { Comment, CommentSchema } = require('./comment.model');
 const { Setting, SettingSchema } = require('./setting.model');
 const { Post, PostSchema } = require('./post.model');
+const { Clinic, ClinicSchema } = require('./clinic.model');
 
 function setupModels(sequelize) {
   User.init(UserSchema, User.config(sequelize));
@@ -12,6 +13,7 @@ function setupModels(sequelize) {
   Comment.init(CommentSchema, Comment.config(sequelize));
   Setting.init(SettingSchema, Setting.config(sequelize));
   Post.init(PostSchema, Post.config(sequelize));
+  Clinic.init(ClinicSchema, Clinic.config(sequelize));
 
   // Customer.associate(sequelize.models);
   Post.associate(sequelize.models);

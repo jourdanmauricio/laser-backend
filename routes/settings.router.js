@@ -4,11 +4,11 @@ const express = require('express');
 const passport = require('passport');
 const { checkAdminRole } = require('./../middlewares/auth.handler');
 const SettingService = require('./../services/setting.service');
+const PostService = require('./../services/post.service');
 const validatorHandler = require('./../middlewares/validator.handler');
 const { config } = require('./../config/config');
 
 const {
-  updateSettingSchema,
   createSettingSchema,
   // getSettingSchema,
 } = require('./../schemas/setting.schema');
@@ -22,6 +22,7 @@ const CONFIG_REVALIDATE = {
 
 const router = express.Router();
 const service = new SettingService();
+const postService = new PostService();
 
 const multer = require('multer');
 
@@ -92,13 +93,23 @@ router.put(
   '/',
   passport.authenticate('jwt', { session: false }),
   checkAdminRole,
-  validatorHandler(updateSettingSchema, 'body'),
+  // validatorHandler(updateSettingSchema, 'body'),
   async (req, res, next) => {
     try {
       const { data } = req.body;
+
       const setting = await service.updateAll(data);
 
-      await axios(URL_REVALIDATE, CONFIG_REVALIDATE);
+      const posts = await postService.find();
+
+      await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
+      await axios(`${URL_REVALIDATE}?path=/blog`, CONFIG_REVALIDATE);
+      for (const post of posts) {
+        await axios(
+          `${URL_REVALIDATE}?path=/blog/${post.slug}`,
+          CONFIG_REVALIDATE
+        );
+      }
 
       res.json(setting);
     } catch (error) {

@@ -4,9 +4,26 @@ module.exports = {
   async up(queryInterface) {
     return queryInterface.bulkInsert('settings', [
       {
-        type: 'SOCIAL_MEDIA',
-        feature: 'facebook',
-        value: 'https://www.facebook.com/hathayogaloberia/',
+        type: 'image',
+        feature: 'logo',
+        value:
+          'https://res.cloudinary.com/dn7npxeof/image/upload/v1677218204/laura_rodriguez/logo_desktop.svg',
+      },
+      {
+        type: 'image',
+        feature: 'hero',
+        value:
+          'https://res.cloudinary.com/dn7npxeof/image/upload/v1676950615/laura_rodriguez/home.jpg',
+      },
+      {
+        type: 'text',
+        feature: 'textHero',
+        value: 'Doctora Laura Rodriguez',
+      },
+      {
+        type: 'style',
+        feature: 'posHero',
+        value: 'top-1/2',
       },
       {
         type: 'SOCIAL_MEDIA',
@@ -35,11 +52,6 @@ module.exports = {
         value: '(02262) 470952',
       },
       {
-        type: 'CONTACT',
-        feature: 'address',
-        value: 'Moreno 20, Lobería. CP: 7635',
-      },
-      {
         type: 'STYLE',
         feature: 'title_color',
         value: '#531253',
@@ -49,7 +61,6 @@ module.exports = {
         feature: 'paragraph_color',
         value: '#121212',
       },
-
       {
         type: 'STYLE',
         feature: 'button_color',

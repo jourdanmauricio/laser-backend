@@ -32,10 +32,11 @@ class SettingService {
   }
 
   async updateAll(changes) {
-    for (const fea in changes) {
-      const feature = await this.findOneByFeature(fea);
-      await feature.update({ value: changes[fea] });
+    for (const fea of changes) {
+      const feature = await this.findOneByFeature(fea.feature);
+      await feature.update(fea);
     }
+
     const settings = await this.find();
     return settings;
   }
