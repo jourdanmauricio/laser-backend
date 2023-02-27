@@ -3,28 +3,62 @@
 module.exports = {
   async up(queryInterface) {
     return queryInterface.bulkInsert('settings', [
+      // NAV
       {
         type: 'image',
-        feature: 'logo',
+        feature: 'logoImage',
         value:
           'https://res.cloudinary.com/dn7npxeof/image/upload/v1677218204/laura_rodriguez/logo_desktop.svg',
       },
       {
+        type: 'style',
+        feature: 'navBgColor',
+        value: '#eff6ff',
+      },
+      {
+        type: 'style',
+        feature: 'navTextColor',
+        value: '#1f2937',
+      },
+      {
+        type: 'style',
+        feature: 'navHoverColor',
+        value: '#000000',
+      },
+      {
+        type: 'style',
+        feature: 'navCurrentPageColor',
+        value: '#14b8a6',
+      },
+      // HERO
+      {
         type: 'image',
-        feature: 'hero',
+        feature: 'heroImage',
         value:
           'https://res.cloudinary.com/dn7npxeof/image/upload/v1676950615/laura_rodriguez/home.jpg',
       },
       {
+        type: 'style',
+        feature: 'heroOpacity',
+        value: '30',
+      },
+      {
         type: 'text',
-        feature: 'textHero',
-        value: 'Doctora Laura Rodriguez',
+        feature: 'heroText',
+        value:
+          '<h1 class="ql-align-center"><strong style="color: rgb(255, 255, 204);">﻿Doctora Laura Rodriguez</strong></h1>',
+      },
+      {
+        type: 'color',
+        feature: 'heroTextColor',
+        value: 'text-white',
       },
       {
         type: 'style',
-        feature: 'posHero',
+        feature: 'heroPos',
         value: 'top-1/2',
       },
+      //
       {
         type: 'SOCIAL_MEDIA',
         feature: 'instagram',
