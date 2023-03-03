@@ -40,7 +40,7 @@ module.exports = {
       {
         type: 'style',
         feature: 'heroOpacity',
-        value: '30',
+        value: '0.3',
       },
       {
         type: 'text',
@@ -51,13 +51,60 @@ module.exports = {
       {
         type: 'color',
         feature: 'heroTextColor',
-        value: 'text-white',
+        value: '#fff',
       },
       {
         type: 'style',
-        feature: 'heroPos',
-        value: 'top-1/2',
+        feature: 'heroTop',
+        value: '50%',
       },
+      // BODY
+      {
+        type: 'color',
+        feature: 'bodyBgColor',
+        value: '#f3f4f6',
+      },
+      {
+        type: 'color',
+        feature: 'h1Color',
+        value: '#000',
+      },
+      {
+        type: 'color',
+        feature: 'h2Color',
+        value: '#000',
+      },
+      {
+        type: 'color',
+        feature: 'h3Color',
+        value: '#000',
+      },
+      {
+        type: 'color',
+        feature: 'paragraphColor',
+        value: '#000',
+      },
+      {
+        type: 'style',
+        feature: 'h1Pos',
+        value: 'text-center',
+      },
+      {
+        type: 'style',
+        feature: 'h2Pos',
+        value: 'text-center',
+      },
+      {
+        type: 'style',
+        feature: 'h3Pos',
+        value: 'text-center',
+      },
+      {
+        type: 'style',
+        feature: 'paragraphPos',
+        value: 'text-center',
+      },
+
       //
       {
         type: 'SOCIAL_MEDIA',
