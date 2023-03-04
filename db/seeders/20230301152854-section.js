@@ -6,7 +6,7 @@ module.exports = {
       'sections',
       [
         {
-          name: 'Sobre mi',
+          name: 'about',
           show: false,
           page: '/',
           type: 'TEXT',
