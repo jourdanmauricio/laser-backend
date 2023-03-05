@@ -14,6 +14,11 @@ const SectionSchema = {
     type: DataTypes.STRING,
     unique: true,
   },
+  title: {
+    allowNull: false,
+    type: DataTypes.STRING,
+    unique: true,
+  },
   show: {
     allowNull: false,
     type: DataTypes.BOOLEAN,
