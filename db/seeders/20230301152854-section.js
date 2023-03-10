@@ -8,7 +8,8 @@ module.exports = {
       [
         {
           name: 'about',
-          title: 'Sobre mi',
+          title:
+            '<h2 class="ql-align-center"><span style="color: rgb(0, 102, 204);">Sobre mi</span></h2>',
           show: true,
           page: '/',
           type: 'TEXT',
@@ -41,7 +42,8 @@ module.exports = {
       [
         {
           name: 'services',
-          title: 'Servicios',
+          title:
+            '<h2 class="ql-align-center"><span style="color: rgb(0, 102, 204);">Servicios</span></h2>',
           show: true,
           page: '/',
           type: 'SPLIT',
@@ -108,7 +110,8 @@ module.exports = {
       [
         {
           name: 'blog',
-          title: 'Entradas destacadas',
+          title:
+            '<h2 class="ql-align-center"><span style="color: rgb(0, 102, 204);">Entradas destacadas</span></h2>',
           show: true,
           page: '/',
           type: 'TEXT',
