@@ -31,6 +31,12 @@ class SettingService {
     return dataFeature;
   }
 
+  async update(id, changes) {
+    const setting = await this.findOne(id);
+    const rta = await setting.update(changes);
+    return rta;
+  }
+
   async updateAll(changes) {
     for (const fea of changes) {
       const feature = await this.findOneByFeature(fea.feature);

@@ -4,13 +4,13 @@ const express = require('express');
 const passport = require('passport');
 const { checkAdminRole } = require('./../middlewares/auth.handler');
 const SettingService = require('./../services/setting.service');
-const PostService = require('./../services/post.service');
+// const PostService = require('./../services/post.service');
 const validatorHandler = require('./../middlewares/validator.handler');
 const { config } = require('./../config/config');
 
 const {
   createSettingSchema,
-  // getSettingSchema,
+  updateSettingSchema,
 } = require('./../schemas/setting.schema');
 
 const URL_REVALIDATE = `${config.apiFrontend}/revalidate`;
@@ -22,7 +22,7 @@ const CONFIG_REVALIDATE = {
 
 const router = express.Router();
 const service = new SettingService();
-const postService = new PostService();
+// const postService = new PostService();
 
 const multer = require('multer');
 
@@ -42,7 +42,6 @@ const upload = multer({ storage: storage });
 router.get(
   '/',
   // passport.authenticate('jwt', { session: false }),
-  // checkAdminRole,
   async (req, res, next) => {
     try {
       const settings = await service.find();
@@ -90,6 +89,29 @@ router.post(
 );
 
 router.put(
+  '/:id',
+  validatorHandler(updateSettingSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const body = req.body;
+      const { id } = req.params;
+
+      const section = await service.update(id, body);
+
+      await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
+      // await axios(
+      //   `${URL_REVALIDATE}?path=/blog/${req.body.slug}`,
+      //   CONFIG_REVALIDATE
+      // );
+
+      res.status(200).json(section);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.put(
   '/',
   passport.authenticate('jwt', { session: false }),
   checkAdminRole,
@@ -100,16 +122,16 @@ router.put(
 
       const setting = await service.updateAll(data);
 
-      const posts = await postService.find();
+      // const posts = await postService.find();
 
       await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
       await axios(`${URL_REVALIDATE}?path=/blog`, CONFIG_REVALIDATE);
-      for (const post of posts) {
-        await axios(
-          `${URL_REVALIDATE}?path=/blog/${post.slug}`,
-          CONFIG_REVALIDATE
-        );
-      }
+      // for (const post of posts) {
+      //   await axios(
+      //     `${URL_REVALIDATE}?path=/blog/${post.slug}`,
+      //     CONFIG_REVALIDATE
+      //   );
+      // }
 
       res.json(setting);
     } catch (error) {

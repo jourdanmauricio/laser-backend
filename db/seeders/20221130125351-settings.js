@@ -11,22 +11,22 @@ module.exports = {
           'https://res.cloudinary.com/dn7npxeof/image/upload/v1677218204/laura_rodriguez/logo_desktop.svg',
       },
       {
-        type: 'style',
+        type: 'color',
         feature: 'navBgColor',
         value: '#eff6ff',
       },
       {
-        type: 'style',
+        type: 'color',
         feature: 'navTextColor',
         value: '#1f2937',
       },
       {
-        type: 'style',
+        type: 'stcoloryle',
         feature: 'navHoverColor',
         value: '#000000',
       },
       {
-        type: 'style',
+        type: 'color',
         feature: 'navCurrentPageColor',
         value: '#14b8a6',
       },
@@ -64,52 +64,73 @@ module.exports = {
         feature: 'bodyBgColor',
         value: '#f3f4f6',
       },
+      // SECTIONS
       {
         type: 'color',
-        feature: 'h1Color',
-        value: '#000',
-      },
-      {
-        type: 'color',
-        feature: 'h2Color',
-        value: '#000',
+        feature: 'aboutBgColor',
+        value: '#f3f4f6',
       },
       {
         type: 'color',
-        feature: 'h3Color',
-        value: '#000',
+        feature: 'servicesBgColor',
+        value: '#f3f4f6',
       },
       {
         type: 'color',
-        feature: 'paragraphColor',
-        value: '#000',
+        feature: 'blogBgColor',
+        value: '#f3f4f6',
+      },
+      // FOOTER
+      {
+        type: 'color',
+        feature: 'footerBgColor',
+        value: '#161716',
       },
       {
-        type: 'style',
-        feature: 'h1Pos',
-        value: 'text-center',
+        type: 'color',
+        feature: 'footerTextColor',
+        value: '#ffffff',
       },
       {
-        type: 'style',
-        feature: 'h2Pos',
-        value: 'text-center',
+        type: 'color',
+        feature: 'footerButtonsColor',
+        value: '#ffffff',
       },
       {
-        type: 'style',
-        feature: 'h3Pos',
-        value: 'text-center',
+        type: 'color',
+        feature: 'footerButtonsHoverColor',
+        value: '#131213',
       },
       {
-        type: 'style',
-        feature: 'paragraphPos',
-        value: 'text-center',
+        type: 'color',
+        feature: 'footerLinksColor',
+        value: '#ffffff',
       },
-
-      //
+      {
+        type: 'color',
+        feature: 'footerLinksHoverColor',
+        value: '#ffffff',
+      },
+      {
+        type: 'color',
+        feature: 'footer2BgColor',
+        value: '#131213',
+      },
+      {
+        type: 'color',
+        feature: 'footer2TextColor',
+        value: '#fefeff',
+      },
+      // SOCIAL MEDIA
       {
         type: 'SOCIAL_MEDIA',
         feature: 'instagram',
-        value: 'https://www.instagram.com/hathayogaloberia/',
+        value: 'https://www.instagram.com/lalaloberia/',
+      },
+      {
+        type: 'SOCIAL_MEDIA',
+        feature: 'facebook',
+        value: 'https://www.facebook.com/lala.rodriguez.90857/',
       },
       {
         type: 'SOCIAL_MEDIA',
@@ -120,93 +141,38 @@ module.exports = {
         type: 'CONTACT',
         feature: 'whatsapp',
         value:
-          'https://wa.me/5492262470952?text=Hola, quiero recibir información',
+          'https://wa.me/5492262470100?text=Hola, quiero recibir información',
       },
       {
         type: 'CONTACT',
         feature: 'email',
-        value: 'hathayogaloberia@gmail.com',
+        value: 'laurarodriguez@gmail.com',
       },
       {
         type: 'CONTACT',
         feature: 'phone',
-        value: '(02262) 470952',
+        value: '(02262) 15 470100',
       },
-      {
-        type: 'STYLE',
-        feature: 'title_color',
-        value: '#531253',
-      },
-      {
-        type: 'STYLE',
-        feature: 'paragraph_color',
-        value: '#121212',
-      },
-      {
-        type: 'STYLE',
-        feature: 'button_color',
-        value: '#531253',
-      },
-      {
-        type: 'STYLE',
-        feature: 'divisor_color',
-        value: '#531253',
-      },
-      {
-        type: 'STYLE',
-        feature: 'effect_color',
-        value: '#531253',
-      },
-      {
-        type: 'STYLE',
-        feature: 'error_color',
-        value: 'ff0000',
-      },
-      {
-        type: 'STYLE',
-        feature: 'h1_color',
-        value: '#ffffff',
-      },
-      {
-        type: 'STYLE',
-        feature: 'paragraph_header_color',
-        value: '#ffffff',
-      },
-      {
-        type: 'STYLE',
-        feature: 'background_color',
-        value: '#eaeaea',
-      },
-      {
-        type: 'STYLE',
-        feature: 'background_footer_color',
-        value: '#fafafa',
-      },
-      {
-        type: 'STYLE',
-        feature: 'table_header_color',
-        value: '#eaeaea',
-      },
-      {
-        type: 'STYLE',
-        feature: 'table_header_text_color',
-        value: '#170312',
-      },
-      {
-        type: 'STYLE',
-        feature: 'table_body_color',
-        value: '#eaeaea',
-      },
-      {
-        type: 'STYLE',
-        feature: 'table_border_color',
-        value: '#170312',
-      },
-      {
-        type: 'STYLE',
-        feature: 'table_body_text_color',
-        value: '#170312',
-      },
+      // {
+      //   type: 'STYLE',
+      //   feature: 'button_color',
+      //   value: '#531253',
+      // },
+      // {
+      //   type: 'STYLE',
+      //   feature: 'divisor_color',
+      //   value: '#531253',
+      // },
+      // {
+      //   type: 'STYLE',
+      //   feature: 'effect_color',
+      //   value: '#531253',
+      // },
+      // {
+      //   type: 'STYLE',
+      //   feature: 'error_color',
+      //   value: 'ff0000',
+      // },
     ]);
   },
 

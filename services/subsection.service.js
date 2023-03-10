@@ -2,14 +2,14 @@ const boom = require('@hapi/boom');
 const { models } = require('../libs/sequelize');
 
 class SubsectionService {
-  // async create(data) {
-  //   try {
-  //     const newSection = await models.Subsection.create(data);
-  //     return newSection;
-  //   } catch (error) {
-  //     throw boom.conflict('Error creando section');
-  //   }
-  // }
+  async create(data) {
+    try {
+      const newSection = await models.Subsection.create(data);
+      return newSection;
+    } catch (error) {
+      throw boom.conflict('Error creando section');
+    }
+  }
 
   // async find() {
   //   const rta = await models.Section.findAll({
@@ -32,11 +32,11 @@ class SubsectionService {
     return rta;
   }
 
-  // async delete(id) {
-  //   const section = await this.findOne(id);
-  //   await section.destroy();
-  //   return { id };
-  // }
+  async delete(id) {
+    const section = await this.findOne(id);
+    await section.destroy();
+    return { id };
+  }
 }
 
 module.exports = SubsectionService;

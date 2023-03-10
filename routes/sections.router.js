@@ -1,17 +1,17 @@
-// const axios = require('axios');
+const axios = require('axios');
 const express = require('express');
 // const passport = require('passport');
 // const { checkAdminRole } = require('./../middlewares/auth.handler');
 
 // const multer = require('multer');
-// const { config } = require('./../config/config');
+const { config } = require('./../config/config');
 
-// const URL_REVALIDATE = `${config.apiFrontend}/revalidate`;
-// const CONFIG_REVALIDATE = {
-//   headers: {
-//     revalidate: config.revalidateToken,
-//   },
-// };
+const URL_REVALIDATE = `${config.apiFrontend}/revalidate`;
+const CONFIG_REVALIDATE = {
+  headers: {
+    revalidate: config.revalidateToken,
+  },
+};
 
 // const storage = multer.diskStorage({
 //   destination: function (req, file, cb) {
@@ -81,15 +81,15 @@ router.put(
       const body = req.body;
       const { id } = req.params;
 
-      const post = await sectionService.update(id, body);
+      const section = await sectionService.update(id, body);
 
-      // await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
+      await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
       // await axios(
       //   `${URL_REVALIDATE}?path=/blog/${req.body.slug}`,
       //   CONFIG_REVALIDATE
       // );
 
-      res.status(200).json(post);
+      res.status(200).json(section);
     } catch (error) {
       next(error);
     }
