@@ -51,6 +51,7 @@ router.post(
     const newClinic = await clinicService.create(body);
 
     await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
+    await axios(`${URL_REVALIDATE}?path=/contact`, CONFIG_REVALIDATE);
 
     res.status(201).json(newClinic);
   }
@@ -67,6 +68,7 @@ router.put(
       const clinic = await clinicService.update(id, body);
 
       await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
+      await axios(`${URL_REVALIDATE}?path=/contact`, CONFIG_REVALIDATE);
 
       res.status(200).json(clinic);
     } catch (error) {
@@ -81,8 +83,9 @@ router.delete(
   async (req, res, next) => {
     try {
       const { id } = req.params;
+      await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
+      await axios(`${URL_REVALIDATE}?path=/contact`, CONFIG_REVALIDATE);
       res.status(200).json(await clinicService.delete(id));
-      await axios(URL_REVALIDATE, CONFIG_REVALIDATE);
     } catch (error) {
       next(error);
     }
