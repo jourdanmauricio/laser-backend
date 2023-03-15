@@ -3,6 +3,7 @@
 module.exports = {
   async up(queryInterface) {
     return queryInterface.bulkInsert('settings', [
+      // MENU
       {
         type: 'image',
         feature: 'logoImage',
@@ -23,7 +24,7 @@ module.exports = {
         comment: null,
       },
       {
-        type: 'stcoloryle',
+        type: 'color',
         feature: 'navHoverColor',
         value: '#000000',
         comment: null,
@@ -34,6 +35,7 @@ module.exports = {
         value: '#14b8a6',
         comment: null,
       },
+      // HERO
       {
         type: 'image',
         feature: 'heroImage',
@@ -67,15 +69,43 @@ module.exports = {
         comment: null,
       },
       {
+        type: 'style',
+        feature: 'waveHeroShow',
+        value: 'true',
+        comment: null,
+      },
+      {
+        type: 'style',
+        feature: 'waveHero',
+        value:
+          'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
+        comment: null,
+      },
+      // GENERAL
+      {
         type: 'color',
         feature: 'bodyBgColor',
         value: '#f3f4f6',
         comment: null,
       },
+      // SECTIONS
       {
         type: 'color',
         feature: 'aboutBgColor',
         value: '#f3f4f6',
+        comment: null,
+      },
+      {
+        type: 'style',
+        feature: 'waveAboutShow',
+        value: 'true',
+        comment: null,
+      },
+      {
+        type: 'style',
+        feature: 'waveAbout',
+        value:
+          'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
         comment: null,
       },
       {
@@ -85,11 +115,58 @@ module.exports = {
         comment: null,
       },
       {
+        type: 'style',
+        feature: 'waveServiceShow',
+        value: 'true',
+        comment: null,
+      },
+      {
+        type: 'style',
+        feature: 'waveService',
+        value:
+          'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
+        comment: null,
+      },
+      {
         type: 'color',
         feature: 'blogBgColor',
         value: '#f3f4f6',
         comment: null,
       },
+      {
+        type: 'style',
+        feature: 'waveBlogShow',
+        value: 'true',
+        comment: null,
+      },
+      {
+        type: 'style',
+        feature: 'waveBlog',
+        value:
+          'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
+        comment: null,
+      },
+      {
+        type: 'color',
+        feature: 'clinicBgColor',
+        value: '#f3f4f6',
+        comment: null,
+      },
+      {
+        type: 'style',
+        feature: 'waveClinicShow',
+        value: 'true',
+        comment: null,
+      },
+      {
+        type: 'style',
+        feature: 'waveClinic',
+        value:
+          'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
+        comment: null,
+      },
+
+      // FOOTER
       {
         type: 'color',
         feature: 'footerBgColor',
@@ -175,6 +252,33 @@ module.exports = {
         value: '(02262) 15 470100',
         comment: null,
       },
+      // Metadata
+      {
+        type: 'METADATA',
+        feature: 'meta_description',
+        value:
+          'Web especializada en ginecología y sexología. Encontrarás información actualizada sobre la salud sexual femenina y para obtener el cuidado médico que necesita',
+        comment: null,
+      },
+      {
+        type: 'METADATA',
+        feature: 'meta_title',
+        value: 'Doctora Laura Rodriguez - Ginecóloga',
+        comment: null,
+      },
+      {
+        type: 'METADATA',
+        feature: 'meta_canonical',
+        value: 'http://hathayogaloberia.ga',
+        comment: null,
+      },
+      {
+        type: 'METADATA',
+        feature: 'meta_url',
+        value: 'http://hathayogaloberia.ga',
+        comment: null,
+      },
+
       // {
       //   type: 'STYLE',
       //   feature: 'button_color',

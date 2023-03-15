@@ -2,20 +2,20 @@ const Joi = require('joi');
 
 const id = Joi.string();
 
-const name = Joi.string().allow('');
-const email = Joi.string().allow('');
-const phone = Joi.string().allow('');
+const name = Joi.string().allow('').allow(null);
+const email = Joi.string().allow('').allow(null);
+const phone = Joi.string().allow('').allow(null);
 const main = Joi.boolean();
-const state = Joi.string();
-const city = Joi.string();
-const cp = Joi.string();
-const street = Joi.string();
-const number = Joi.string();
-const floor = Joi.string().allow('');
-const apartment = Joi.string().allow('');
+const state = Joi.string().allow('').allow(null);
+const city = Joi.string().allow('').allow(null);
+const cp = Joi.string().allow('').allow(null);
+const street = Joi.string().allow('').allow(null);
+const number = Joi.string().allow('').allow(null);
+const floor = Joi.number().allow(null);
+const apartment = Joi.string().allow('').allow(null);
 const order = Joi.number();
-const days = Joi.string().allow('');
-const observation = Joi.string().allow('');
+const days = Joi.string().allow('').allow(null);
+const observation = Joi.string().allow('').allow(null);
 
 const getClinicSchema = Joi.object({
   id: id.required(),
