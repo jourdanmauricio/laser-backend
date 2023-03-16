@@ -111,7 +111,7 @@ module.exports = {
       {
         type: 'color',
         feature: 'servicesBgColor',
-        value: '#f3f4f6',
+        value: '#ebebeb',
         comment: null,
       },
       {
@@ -146,10 +146,17 @@ module.exports = {
           'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
         comment: null,
       },
+      // CLINIC SECTION
       {
         type: 'color',
         feature: 'clinicBgColor',
-        value: '#f3f4f6',
+        value: '#ebebeb',
+        comment: null,
+      },
+      {
+        type: 'color',
+        feature: 'clinicTextColor',
+        value: '#0f172a',
         comment: null,
       },
       {
@@ -165,7 +172,90 @@ module.exports = {
           'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
         comment: null,
       },
-
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnShow',
+        value: 'true',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnLink',
+        value: '/contact',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnText',
+        value: 'Pedir cita',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnTextColor',
+        value: '#0f172a',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnTextColorHover',
+        value: '#0f172a',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnBorderColor',
+        value: '#0f172a',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnBorderColorHover',
+        value: '#0f172a',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnBg',
+        value: '#cfcfcf',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnBgHover',
+        value: '#adadad',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnTlRadius',
+        value: '30px',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnTrRadius',
+        value: '5px',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnBlRadius',
+        value: '5px',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnBrRadius',
+        value: '5px',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'clinicBtnShadow',
+        value: '6px 4px 16px -4px rgba(0,0,0,0.78)',
+        comment: null,
+      },
       // FOOTER
       {
         type: 'color',
@@ -215,6 +305,7 @@ module.exports = {
         value: '#fefeff',
         comment: null,
       },
+      // SOCIAL MEDIA
       {
         type: 'SOCIAL_MEDIA',
         feature: 'instagram',
@@ -278,27 +369,6 @@ module.exports = {
         value: 'http://hathayogaloberia.ga',
         comment: null,
       },
-
-      // {
-      //   type: 'STYLE',
-      //   feature: 'button_color',
-      //   value: '#531253',
-      // },
-      // {
-      //   type: 'STYLE',
-      //   feature: 'divisor_color',
-      //   value: '#531253',
-      // },
-      // {
-      //   type: 'STYLE',
-      //   feature: 'effect_color',
-      //   value: '#531253',
-      // },
-      // {
-      //   type: 'STYLE',
-      //   feature: 'error_color',
-      //   value: 'ff0000',
-      // },
     ]);
   },
 
