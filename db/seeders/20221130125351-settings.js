@@ -53,7 +53,7 @@ module.exports = {
         type: 'text',
         feature: 'heroText',
         value:
-          '<h1 class="ql-align-center"><strong style="color: rgb(255, 255, 204);">﻿Doctora Laura Rodriguez</strong></h1>',
+          '<h1 class="ql-align-center"><span style="color: rgb(255, 255, 255);">Doctora Laura Rodriguez</span></h1><h2 class="ql-align-center"><span style="color: rgb(255, 255, 255);">Ginecologa</span></h2>',
         comment: null,
       },
       {
@@ -65,7 +65,13 @@ module.exports = {
       {
         type: 'style',
         feature: 'heroTop',
-        value: '50%',
+        value: '46%',
+        comment: null,
+      },
+      {
+        type: 'style',
+        feature: 'heroPosX',
+        value: 'center',
         comment: null,
       },
       {
@@ -81,18 +87,126 @@ module.exports = {
           'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
         comment: null,
       },
-      // GENERAL
+      {
+        type: 'heroBtn',
+        feature: 'show',
+        value: 'true',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'link',
+        value: '/contact',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'text',
+        value: 'Agendar cita',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'textColor',
+        value: '#ffffff',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'textColorHover',
+        value: '#ffffff',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'height',
+        value: '32px',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'width',
+        value: '250px',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'border',
+        value: '1px',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'borderColor',
+        value: '#ffffff00',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'borderColorHover',
+        value: '#ffffff',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'bgColor',
+        value: '#cfcfcf00',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'bgColorHover',
+        value: '#adadad00',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'tlRadius',
+        value: '0px',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'trRadius',
+        value: '0px',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'blRadius',
+        value: '0px',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'brRadius',
+        value: '0px',
+        comment: null,
+      },
+      {
+        type: 'heroBtn',
+        feature: 'shadow',
+        value: '0px 0px 8px -4px rgba(0,0,0,0.78)',
+        comment: null,
+      },
+      // BODY
       {
         type: 'color',
         feature: 'bodyBgColor',
         value: '#f3f4f6',
         comment: null,
       },
-      // SECTIONS
+      // ABOUT
       {
         type: 'color',
         feature: 'aboutBgColor',
         value: '#f3f4f6',
+        comment: null,
+      },
+      {
+        type: 'color',
+        feature: 'aboutTextColor',
+        value: '#1e293b',
         comment: null,
       },
       {
@@ -108,10 +222,17 @@ module.exports = {
           'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
         comment: null,
       },
+      // SERVICES
       {
         type: 'color',
         feature: 'servicesBgColor',
         value: '#ebebeb',
+        comment: null,
+      },
+      {
+        type: 'color',
+        feature: 'servicesTextColor',
+        value: '#1e293b',
         comment: null,
       },
       {
@@ -127,10 +248,17 @@ module.exports = {
           'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
         comment: null,
       },
+      // BLOG
       {
         type: 'color',
         feature: 'blogBgColor',
         value: '#f3f4f6',
+        comment: null,
+      },
+      {
+        type: 'color',
+        feature: 'blogTextColor',
+        value: '#1e293b',
         comment: null,
       },
       {
@@ -146,7 +274,109 @@ module.exports = {
           'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
         comment: null,
       },
-      // CLINIC SECTION
+      {
+        type: 'blogBtn',
+        feature: 'show',
+        value: 'true',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'link',
+        value: '/blog',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'text',
+        value: 'Visita mi blog',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'textColor',
+        value: '#0f172a',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'textColorHover',
+        value: '#0f172a',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'height',
+        value: '32px',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'width',
+        value: '250px',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'border',
+        value: '1px',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'borderColor',
+        value: '#0f172a',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'borderColorHover',
+        value: '#0f172a',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'bgColor',
+        value: '#cfcfcf',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'bgColorHover',
+        value: '#adadad',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'tlRadius',
+        value: '5px',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'trRadius',
+        value: '5px',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'blRadius',
+        value: '5px',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'brRadius',
+        value: '5px',
+        comment: null,
+      },
+      {
+        type: 'blogBtn',
+        feature: 'shadow',
+        value: '6px 4px 16px -4px rgba(0,0,0,0.78)',
+        comment: null,
+      },
+      // CLINIC
       {
         type: 'color',
         feature: 'clinicBgColor',
@@ -174,85 +404,103 @@ module.exports = {
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnShow',
+        feature: 'show',
         value: 'true',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnLink',
+        feature: 'link',
         value: '/contact',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnText',
+        feature: 'text',
         value: 'Pedir cita',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnTextColor',
+        feature: 'textColor',
         value: '#0f172a',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnTextColorHover',
+        feature: 'textColorHover',
         value: '#0f172a',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnBorderColor',
+        feature: 'height',
+        value: '32px',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'width',
+        value: '250px',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'border',
+        value: '1px',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'borderColor',
         value: '#0f172a',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnBorderColorHover',
+        feature: 'borderColorHover',
         value: '#0f172a',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnBg',
+        feature: 'bgColor',
         value: '#cfcfcf',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnBgHover',
+        feature: 'bgColorHover',
         value: '#adadad',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnTlRadius',
-        value: '30px',
-        comment: null,
-      },
-      {
-        type: 'clinicBtn',
-        feature: 'clinicBtnTrRadius',
+        feature: 'tlRadius',
         value: '5px',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnBlRadius',
+        feature: 'trRadius',
         value: '5px',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnBrRadius',
+        feature: 'blRadius',
         value: '5px',
         comment: null,
       },
       {
         type: 'clinicBtn',
-        feature: 'clinicBtnShadow',
+        feature: 'brRadius',
+        value: '5px',
+        comment: null,
+      },
+      {
+        type: 'clinicBtn',
+        feature: 'shadow',
         value: '6px 4px 16px -4px rgba(0,0,0,0.78)',
         comment: null,
       },
@@ -343,7 +591,7 @@ module.exports = {
         value: '(02262) 15 470100',
         comment: null,
       },
-      // Metadata
+      // METADATA
       {
         type: 'METADATA',
         feature: 'meta_description',

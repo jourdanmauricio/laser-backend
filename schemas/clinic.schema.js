@@ -13,6 +13,8 @@ const street = Joi.string().allow('').allow(null);
 const number = Joi.string().allow('').allow(null);
 const floor = Joi.number().allow(null);
 const apartment = Joi.string().allow('').allow(null);
+const image = Joi.string().allow('').allow(null);
+const alt_image = Joi.string().allow('').allow(null);
 const order = Joi.number();
 const days = Joi.string().allow('').allow(null);
 const observation = Joi.string().allow('').allow(null);
@@ -34,6 +36,8 @@ const createClinicSchema = Joi.object({
   apartment,
   order: order.required(),
   main: main.required(),
+  image,
+  alt_image,
   days,
   observation,
 });
@@ -51,6 +55,8 @@ const updateClinicSchema = Joi.object({
   apartment,
   order,
   main,
+  image,
+  alt_image,
   days,
   observation,
 });

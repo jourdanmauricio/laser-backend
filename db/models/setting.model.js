@@ -12,11 +12,12 @@ const SettingSchema = {
   type: {
     allowNull: false,
     type: DataTypes.STRING,
+    // unique: 'settings_unique',
   },
   feature: {
     allowNull: false,
     type: DataTypes.STRING,
-    unique: true,
+    // unique: 'settings_unique',
   },
   value: {
     allowNull: false,
@@ -42,6 +43,13 @@ class Setting extends Model {
       tableName: SETTING_TABLE,
       modelName: 'Setting',
       timestamps: false,
+      // indexes: [
+      //   {
+      //     name: 'settings_unique',
+      //     unique: true,
+      //     fields: ['type', 'feature'],
+      //   },
+      // ],
     };
   }
 }

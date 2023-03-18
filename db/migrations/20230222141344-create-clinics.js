@@ -61,6 +61,14 @@ module.exports = {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
+      image: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
+      alt_image: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
       days: {
         allowNull: true,
         type: DataTypes.STRING,
