@@ -504,6 +504,32 @@ module.exports = {
         value: '6px 4px 16px -4px rgba(0,0,0,0.78)',
         comment: null,
       },
+      // TESTIMONIALS
+      {
+        type: 'color',
+        feature: 'testimonialsBgColor',
+        value: '#f3f4f6',
+        comment: null,
+      },
+      {
+        type: 'color',
+        feature: 'testimonialsTextColor',
+        value: '#1e293b',
+        comment: null,
+      },
+      {
+        type: 'style',
+        feature: 'waveTestimonialsShow',
+        value: 'true',
+        comment: null,
+      },
+      {
+        type: 'style',
+        feature: 'waveTestimonials',
+        value:
+          'M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
+        comment: null,
+      },
       // FOOTER
       {
         type: 'color',

@@ -170,6 +170,39 @@ module.exports = {
       ],
       {}
     );
+    // CLINIC
+    const testimonial_id = await queryInterface.bulkInsert(
+      'sections',
+      [
+        {
+          name: 'testimonials',
+          title:
+            '<h2 class="ql-align-center"><span style="color: rgb(0, 0, 0);">Qué dicen mis pacientes</span></h2>',
+          show: true,
+          page: '/',
+          type: 'TEXT',
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+      ],
+      {}
+    );
+    await queryInterface.bulkInsert(
+      'subsections',
+      [
+        {
+          image: '',
+          alt_image: '',
+          name: 'testimonials',
+          content:
+            '<p style="color: rgb(0, 0, 0);">Me enorgullece saber que los pacientes confían en mí y están satisfechos con la calidad del servicio brindado. Estoy comprometida en brindar la mejor atención médica posible y continuar mejorando mis prácticas para satisfacer sus necesidades y expectativas...</p>',
+          section_id: testimonial_id,
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+      ],
+      {}
+    );
   },
 
   async down(queryInterface) {

@@ -6,7 +6,7 @@ module.exports = {
       'clinics',
       [
         {
-          name: 'Clínica los Sauses',
+          name: 'Clínica los Sauces',
           email: 'turnos@lossauces.com',
           phone: '(0223) 452 9565',
           main: true,
