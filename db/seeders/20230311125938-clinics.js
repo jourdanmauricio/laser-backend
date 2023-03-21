@@ -2,6 +2,7 @@
 
 module.exports = {
   async up(queryInterface) {
+    await queryInterface.bulkDelete('clinics', null, {});
     return queryInterface.bulkInsert(
       'clinics',
       [

@@ -2,6 +2,7 @@
 
 module.exports = {
   async up(queryInterface) {
+    await queryInterface.bulkDelete('settings', null, {});
     return queryInterface.bulkInsert('settings', [
       // LOGO
       {
