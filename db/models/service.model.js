@@ -1,37 +1,34 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
-const SUBSECTION_TABLE = 'subsections';
-const SECTION_TABLE = 'sections';
+const SERVICE_TABLE = 'services';
 
-const SubsectionSchema = {
+const ServiceSchema = {
   id: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER,
   },
+  title: {
+    allowNull: false,
+    type: DataTypes.STRING,
+    unique: true,
+  },
+  content: {
+    allowNull: false,
+    type: DataTypes.TEXT,
+  },
   image: {
-    allowNull: true,
+    allowNull: false,
     type: DataTypes.STRING,
   },
   alt_image: {
-    allowNull: true,
-    type: DataTypes.STRING,
-  },
-  name: {
     allowNull: false,
     type: DataTypes.STRING,
   },
-  content: {
+  order: {
     allowNull: true,
-    type: DataTypes.TEXT,
-  },
-  section_id: {
-    allowNull: false,
     type: DataTypes.INTEGER,
-    references: { model: SECTION_TABLE, key: 'ID' },
-    onUpdate: 'RESTRICT',
-    onDelete: 'RESTRICT',
   },
   createdAt: {
     allowNull: false,
@@ -47,23 +44,12 @@ const SubsectionSchema = {
   },
 };
 
-class Subsection extends Model {
-  static associate(models) {
-    this.belongsTo(models.Section, {
-      as: 'section',
-      foreignKey: 'section_id',
-    });
-    //   this.hasOne(models.Customer, {
-    //     as: 'customer',
-    //     foreignKey: 'userId',
-    //   });
-  }
-
+class Service extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tableName: SUBSECTION_TABLE,
-      modelName: 'Subsection',
+      tableName: SERVICE_TABLE,
+      modelName: 'Service',
       timestamps: false,
       defaultScope: {
         attributes: { exclude: ['createdAt', 'updatedAt'] },
@@ -72,4 +58,4 @@ class Subsection extends Model {
   }
 }
 
-module.exports = { SUBSECTION_TABLE, SubsectionSchema, Subsection };
+module.exports = { SERVICE_TABLE, ServiceSchema, Service };

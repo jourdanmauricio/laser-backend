@@ -1,41 +1,37 @@
 'use strict';
 
 const { DataTypes, Sequelize } = require('sequelize');
-const { SUBSECTION_TABLE } = require('./../models/subsection.model');
-const { SECTION_TABLE } = require('./../models/section.model');
+const { SERVICE_TABLE } = require('./../models/service.model');
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface) => {
-    await queryInterface.createTable(SUBSECTION_TABLE, {
+    await queryInterface.createTable(SERVICE_TABLE, {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
+      title: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        unique: true,
+      },
+      content: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
       image: {
-        allowNull: true,
+        allowNull: false,
         type: DataTypes.STRING,
       },
       alt_image: {
-        allowNull: true,
-        type: DataTypes.STRING,
-      },
-      name: {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      content: {
+      order: {
         allowNull: true,
-        type: DataTypes.TEXT,
-      },
-      section_id: {
-        allowNull: false,
         type: DataTypes.INTEGER,
-        references: { model: SECTION_TABLE, key: 'ID' },
-        onUpdate: 'RESTRICT',
-        onDelete: 'RESTRICT',
       },
       createdAt: {
         allowNull: false,
@@ -52,6 +48,6 @@ module.exports = {
     });
   },
   down: async (queryInterface) => {
-    await queryInterface.dropTable(SUBSECTION_TABLE);
+    await queryInterface.dropTable(SERVICE_TABLE);
   },
 };

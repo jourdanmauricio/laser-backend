@@ -102,8 +102,8 @@ router.delete(
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      res.status(200).json(await postService.delete(id));
       await axios(URL_REVALIDATE, CONFIG_REVALIDATE);
+      res.status(200).json(await postService.delete(id));
     } catch (error) {
       next(error);
     }

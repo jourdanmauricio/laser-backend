@@ -3,7 +3,7 @@ const express = require('express');
 // const passport = require('passport');
 // const { checkAdminRole } = require('./../middlewares/auth.handler');
 
-const { config } = require('./../config/config');
+const { config } = require('../config/config');
 
 const URL_REVALIDATE = `${config.apiFrontend}/revalidate`;
 const CONFIG_REVALIDATE = {
@@ -12,22 +12,22 @@ const CONFIG_REVALIDATE = {
   },
 };
 
-const SubsectionService = require('../services/subsection.service');
+const ServiceService = require('../services/service.service');
 
 const validatorHandler = require('../middlewares/validator.handler');
 const {
-  createSubsectionSchema,
-  updateSubsectionSchema,
-  getSubsectionSchema,
-} = require('../schemas/subsection.schema');
+  createServiceSchema,
+  updateServiceSchema,
+  getServiceSchema,
+} = require('../schemas/service.schema');
 
 const router = express.Router();
-const subsectionService = new SubsectionService();
+const serviceService = new ServiceService();
 
 router.get('/', async (req, res, next) => {
   try {
-    const posts = await subsectionService.find();
-    res.status(200).json(posts);
+    const services = await serviceService.find();
+    res.status(200).json(services);
   } catch (error) {
     next(error);
   }
@@ -35,30 +35,28 @@ router.get('/', async (req, res, next) => {
 
 router.post(
   '/',
-  validatorHandler(createSubsectionSchema, 'body'),
+  validatorHandler(createServiceSchema, 'body'),
   async (req, res) => {
     const body = req.body;
-    const newPost = await subsectionService.create(body);
+    const newService = await serviceService.create(body);
 
     await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
-
-    res.status(201).json(newPost);
+    res.status(201).json(newService);
   }
 );
 
 router.put(
   '/:id',
-  validatorHandler(updateSubsectionSchema, 'body'),
+  validatorHandler(updateServiceSchema, 'body'),
   async (req, res, next) => {
     try {
       const body = req.body;
       const { id } = req.params;
 
-      const subsection = await subsectionService.update(id, body);
+      const service = await serviceService.update(id, body);
 
       await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
-
-      res.status(200).json(subsection);
+      res.status(200).json(service);
     } catch (error) {
       next(error);
     }
@@ -67,12 +65,14 @@ router.put(
 
 router.delete(
   '/:id',
-  validatorHandler(getSubsectionSchema, 'params'),
+  validatorHandler(getServiceSchema, 'params'),
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      res.status(200).json(await subsectionService.delete(id));
+      const delId = await serviceService.delete(id);
       await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
+      console.log('delId', delId);
+      res.status(200).json(delId);
     } catch (error) {
       next(error);
     }

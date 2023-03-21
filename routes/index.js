@@ -9,9 +9,8 @@ const settingRouter = require('./settings.router');
 const postsRouter = require('./posts.router');
 const imagesRouter = require('./images.router');
 const clinicsRouter = require('./clinics.router');
-const setionsRouter = require('./sections.router');
-const subsetionsRouter = require('./subsections.router');
 const testimonialsRouter = require('./testimonials.router');
+const servicesRouter = require('./services.router');
 
 function routerApi(app) {
   const router = express.Router();
@@ -25,9 +24,8 @@ function routerApi(app) {
   router.use('/posts', postsRouter);
   router.use('/images', imagesRouter);
   router.use('/clinics', clinicsRouter);
-  router.use('/sections', setionsRouter);
-  router.use('/subsections', subsetionsRouter);
   router.use('/testimonials', testimonialsRouter);
+  router.use('/services', servicesRouter);
 }
 
 module.exports = routerApi;
