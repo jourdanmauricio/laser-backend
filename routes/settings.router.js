@@ -98,11 +98,28 @@ router.put(
 
       const section = await service.update(id, body);
 
+      // const posts = await postService.find();
+
       await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
-      // await axios(
-      //   `${URL_REVALIDATE}?path=/blog/${req.body.slug}`,
-      //   CONFIG_REVALIDATE
-      // );
+      await axios(`${URL_REVALIDATE}?path=/blog`, CONFIG_REVALIDATE);
+      // for (const post of posts) {
+      //   await axios(
+      //     `${URL_REVALIDATE}?path=/blog/${post.slug}`,
+      //     CONFIG_REVALIDATE
+      //   );
+      // }
+      await axios(
+        `${URL_REVALIDATE}?path=/politicas-privacidad`,
+        CONFIG_REVALIDATE
+      );
+      await axios(
+        `${URL_REVALIDATE}?path=/proteccion-datos`,
+        CONFIG_REVALIDATE
+      );
+      await axios(
+        `${URL_REVALIDATE}?path=/politicas-cookies`,
+        CONFIG_REVALIDATE
+      );
 
       res.status(200).json(section);
     } catch (error) {
