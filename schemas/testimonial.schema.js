@@ -9,7 +9,7 @@ const order = Joi.number().integer();
 const createTestimonialSchema = Joi.object({
   name: name.required(),
   message: message.required(),
-  starts: stars.required(),
+  stars: stars.required(),
   order: order.required(),
 });
 

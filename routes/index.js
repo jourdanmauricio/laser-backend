@@ -11,6 +11,7 @@ const imagesRouter = require('./images.router');
 const clinicsRouter = require('./clinics.router');
 const testimonialsRouter = require('./testimonials.router');
 const servicesRouter = require('./services.router');
+const notesRouter = require('./notes.router');
 
 function routerApi(app) {
   const router = express.Router();
@@ -26,6 +27,7 @@ function routerApi(app) {
   router.use('/clinics', clinicsRouter);
   router.use('/testimonials', testimonialsRouter);
   router.use('/services', servicesRouter);
+  router.use('/notes', notesRouter);
 }
 
 module.exports = routerApi;

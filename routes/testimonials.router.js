@@ -8,6 +8,7 @@ const validatorHandler = require('./../middlewares/validator.handler');
 const { config } = require('./../config/config');
 
 const {
+  getTestimonialSchema,
   createTestimonialSchema,
   updateTestimonialSchema,
 } = require('./../schemas/testimonial.schema');
@@ -21,7 +22,6 @@ const CONFIG_REVALIDATE = {
 
 const router = express.Router();
 const service = new TestimonialService();
-// const postService = new PostService();
 
 router.get('/', async (req, res, next) => {
   try {
@@ -70,33 +70,21 @@ router.put(
   }
 );
 
-// router.put(
-//   '/',
-//   passport.authenticate('jwt', { session: false }),
-//   checkAdminRole,
-//   // validatorHandler(updateSettingSchema, 'body'),
-//   async (req, res, next) => {
-//     try {
-//       const { data } = req.body;
+router.delete(
+  '/:id',
+  validatorHandler(getTestimonialSchema, 'params'),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const delId = await service.delete(id);
 
-//       const setting = await service.updateAll(data);
+      await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
 
-//       // const posts = await postService.find();
-
-//       await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
-//       await axios(`${URL_REVALIDATE}?path=/blog`, CONFIG_REVALIDATE);
-//       // for (const post of posts) {
-//       //   await axios(
-//       //     `${URL_REVALIDATE}?path=/blog/${post.slug}`,
-//       //     CONFIG_REVALIDATE
-//       //   );
-//       // }
-
-//       res.json(setting);
-//     } catch (error) {
-//       next(error);
-//     }
-//   }
-// );
+      res.status(200).json(delId);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 module.exports = router;

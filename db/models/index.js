@@ -7,6 +7,7 @@ const { Post, PostSchema } = require('./post.model');
 const { Clinic, ClinicSchema } = require('./clinic.model');
 const { Testimonial, TestimonialSchema } = require('./testimonial.model');
 const { Service, ServiceSchema } = require('./service.model');
+const { Note, NoteSchema } = require('./note.model');
 
 function setupModels(sequelize) {
   User.init(UserSchema, User.config(sequelize));
@@ -18,6 +19,7 @@ function setupModels(sequelize) {
   Clinic.init(ClinicSchema, Clinic.config(sequelize));
   Testimonial.init(TestimonialSchema, Testimonial.config(sequelize));
   Service.init(ServiceSchema, Service.config(sequelize));
+  Note.init(NoteSchema, Note.config(sequelize));
 
   // Customer.associate(sequelize.models);
   Post.associate(sequelize.models);

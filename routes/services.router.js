@@ -71,7 +71,6 @@ router.delete(
       const { id } = req.params;
       const delId = await serviceService.delete(id);
       await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
-      console.log('delId', delId);
       res.status(200).json(delId);
     } catch (error) {
       next(error);
