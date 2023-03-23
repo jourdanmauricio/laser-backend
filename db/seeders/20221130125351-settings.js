@@ -822,7 +822,7 @@ module.exports = {
         type: 'pagePrivacy',
         feature: 'h1',
         value:
-          '<h1 class="ql-align-center"><span style="color: rgb(255, 255, 255);">Políticas de privacidad</span></h1>',
+          '<p class="ql-align-center"><br></p><h1 class="ql-align-center"><span style="color: rgb(255, 255, 255);">Políticas de privacidad</span></h1><p class="ql-align-center"><br></p>',
         comment: 'Quill',
       },
       {
@@ -841,7 +841,7 @@ module.exports = {
         type: 'pagePrivacy',
         feature: 'text',
         value:
-          '<p><span style="color: rgb(204, 224, 245);">El presente Política de Privacidad establece los términos en que Laura Rodriguez usa y protege la información que es proporcionada por sus usuarios al momento de utilizar su sitio web. Esta compañía está comprometida con la seguridad de los datos de sus usuarios. Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificado, lo hacemos asegurando que sólo se empleará de acuerdo con los términos de este documento. Sin embargo esta Política de Privacidad puede cambiar con el tiempo o ser actualizada por lo que le recomendamos y enfatizamos revisar continuamente esta página para asegurarse que está de acuerdo con dichos cambios.</span></p>',
+          '<p><span style="color: rgb(204, 224, 245);">El presente Política de Privacidad establece los términos en que Laura Rodriguez usa y protege la información que es proporcionada por sus usuarios al momento de utilizar su sitio web. </span></p><p><br></p><p><span style="color: rgb(204, 224, 245);">Esta compañía está comprometida con la seguridad de los datos de sus usuarios. Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificado, lo hacemos asegurando que sólo se empleará de acuerdo con los términos de este documento. </span></p><p><br></p><p><span style="color: rgb(204, 224, 245);">Sin embargo esta Política de Privacidad puede cambiar con el tiempo o ser actualizada por lo que le recomendamos y enfatizamos revisar continuamente esta página para asegurarse que está de acuerdo con dichos cambios.</span></p><p><br></p>',
         comment: 'Quill',
       },
       {

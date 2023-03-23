@@ -132,6 +132,18 @@ router.put(
       //     CONFIG_REVALIDATE
       //   );
       // }
+      await axios(
+        `${URL_REVALIDATE}?path=/politicas-privacidad`,
+        CONFIG_REVALIDATE
+      );
+      await axios(
+        `${URL_REVALIDATE}?path=/proteccion-datos`,
+        CONFIG_REVALIDATE
+      );
+      await axios(
+        `${URL_REVALIDATE}?path=/politicas-cookies`,
+        CONFIG_REVALIDATE
+      );
 
       res.json(setting);
     } catch (error) {
