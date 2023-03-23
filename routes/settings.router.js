@@ -128,45 +128,45 @@ router.put(
   }
 );
 
-router.put(
-  '/',
-  passport.authenticate('jwt', { session: false }),
-  checkAdminRole,
-  // validatorHandler(updateSettingSchema, 'body'),
-  async (req, res, next) => {
-    try {
-      const { data } = req.body;
+// router.put(
+//   '/',
+//   passport.authenticate('jwt', { session: false }),
+//   checkAdminRole,
+//   // validatorHandler(updateSettingSchema, 'body'),
+//   async (req, res, next) => {
+//     try {
+//       const { data } = req.body;
 
-      const setting = await service.updateAll(data);
+//       const setting = await service.updateAll(data);
 
-      // const posts = await postService.find();
+//       // const posts = await postService.find();
 
-      await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
-      await axios(`${URL_REVALIDATE}?path=/blog`, CONFIG_REVALIDATE);
-      // for (const post of posts) {
-      //   await axios(
-      //     `${URL_REVALIDATE}?path=/blog/${post.slug}`,
-      //     CONFIG_REVALIDATE
-      //   );
-      // }
-      await axios(
-        `${URL_REVALIDATE}?path=/politicas-privacidad`,
-        CONFIG_REVALIDATE
-      );
-      await axios(
-        `${URL_REVALIDATE}?path=/proteccion-datos`,
-        CONFIG_REVALIDATE
-      );
-      await axios(
-        `${URL_REVALIDATE}?path=/politicas-cookies`,
-        CONFIG_REVALIDATE
-      );
+//       await axios(`${URL_REVALIDATE}?path=/`, CONFIG_REVALIDATE);
+//       await axios(`${URL_REVALIDATE}?path=/blog`, CONFIG_REVALIDATE);
+//       // for (const post of posts) {
+//       //   await axios(
+//       //     `${URL_REVALIDATE}?path=/blog/${post.slug}`,
+//       //     CONFIG_REVALIDATE
+//       //   );
+//       // }
+//       await axios(
+//         `${URL_REVALIDATE}?path=/politicas-privacidad`,
+//         CONFIG_REVALIDATE
+//       );
+//       await axios(
+//         `${URL_REVALIDATE}?path=/proteccion-datos`,
+//         CONFIG_REVALIDATE
+//       );
+//       await axios(
+//         `${URL_REVALIDATE}?path=/politicas-cookies`,
+//         CONFIG_REVALIDATE
+//       );
 
-      res.json(setting);
-    } catch (error) {
-      next(error);
-    }
-  }
-);
+//       res.json(setting);
+//     } catch (error) {
+//       next(error);
+//     }
+//   }
+// );
 
-module.exports = router;
+// module.exports = router;
