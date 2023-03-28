@@ -3,8 +3,6 @@ const passport = require('passport');
 const { checkAdminRole } = require('./../middlewares/auth.handler');
 const router = express.Router();
 
-// const { config } = require('./../config/config');
-
 const multer = require('multer');
 
 const ImageService = require('./../services/image.service');
@@ -21,20 +19,14 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.get(
-  '/',
-  // passport.authenticate('jwt', { session: false }),
-  // checkAdminRole,
-  async (req, res, next) => {
-    try {
-      const images = await service.getAllCloudinary();
-      res.status(200).json(images);
-    } catch (error) {
-      console.log('ERRRRORRRRR', error);
-      next(error);
-    }
+router.get('/', async (req, res, next) => {
+  try {
+    const images = await service.getAllCloudinary();
+    res.status(200).json(images);
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 router.post(
   '/upload-file',
@@ -59,7 +51,6 @@ router.delete(
   '/',
   passport.authenticate('jwt', { session: false }),
   checkAdminRole,
-  // upload.single('image'),
   async (req, res, next) => {
     try {
       const { public_id } = req.body;

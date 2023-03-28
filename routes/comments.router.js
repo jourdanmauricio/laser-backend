@@ -43,6 +43,8 @@ router.post(
 
 router.delete(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(getCommentSchema, 'params'),
   async (req, res, next) => {
     try {

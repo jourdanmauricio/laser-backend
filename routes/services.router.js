@@ -1,7 +1,7 @@
 const axios = require('axios');
 const express = require('express');
-// const passport = require('passport');
-// const { checkAdminRole } = require('./../middlewares/auth.handler');
+const passport = require('passport');
+const { checkAdminRole } = require('./../middlewares/auth.handler');
 
 const { config } = require('../config/config');
 
@@ -35,6 +35,8 @@ router.get('/', async (req, res, next) => {
 
 router.post(
   '/',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(createServiceSchema, 'body'),
   async (req, res) => {
     const body = req.body;
@@ -47,6 +49,8 @@ router.post(
 
 router.put(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(updateServiceSchema, 'body'),
   async (req, res, next) => {
     try {
@@ -65,6 +69,8 @@ router.put(
 
 router.delete(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(getServiceSchema, 'params'),
   async (req, res, next) => {
     try {

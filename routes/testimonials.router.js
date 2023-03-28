@@ -53,6 +53,8 @@ router.post(
 
 router.put(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(updateTestimonialSchema, 'body'),
   async (req, res, next) => {
     try {
@@ -72,6 +74,8 @@ router.put(
 
 router.delete(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(getTestimonialSchema, 'params'),
   async (req, res, next) => {
     try {

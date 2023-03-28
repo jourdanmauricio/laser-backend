@@ -1,5 +1,8 @@
 const express = require('express');
 
+const passport = require('passport');
+const { checkAdminRole } = require('./../middlewares/auth.handler');
+
 const SubscriberService = require('../services/subscriber.service');
 
 const validatorHandler = require('../middlewares/validator.handler');
@@ -12,14 +15,19 @@ const {
 const router = express.Router();
 const subscriberService = new SubscriberService();
 
-router.get('/', async (req, res, next) => {
-  try {
-    const subscribers = await subscriberService.find();
-    res.status(200).json(subscribers);
-  } catch (error) {
-    next(error);
+router.get(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
+  async (req, res, next) => {
+    try {
+      const subscribers = await subscriberService.find();
+      res.status(200).json(subscribers);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 router.post(
   '/',
@@ -33,6 +41,8 @@ router.post(
 
 router.put(
   '/',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(updateSubscriberSchema, 'body'),
   async (req, res, next) => {
     try {
@@ -48,6 +58,8 @@ router.put(
 
 router.delete(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(getSubscriberSchema, 'params'),
   async (req, res, next) => {
     try {

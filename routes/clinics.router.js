@@ -1,7 +1,7 @@
 const axios = require('axios');
 const express = require('express');
-// const passport = require('passport');
-// const { checkAdminRole } = require('./../middlewares/auth.handler');
+const passport = require('passport');
+const { checkAdminRole } = require('./../middlewares/auth.handler');
 
 const { config } = require('./../config/config');
 const ClinicService = require('../services/clinic.service');
@@ -32,7 +32,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// validatorHandler(getPostSchema, 'params'),
 router.get('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -45,6 +44,8 @@ router.get('/:id', async (req, res, next) => {
 
 router.post(
   '/',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(createClinicSchema, 'body'),
   async (req, res) => {
     const body = req.body;
@@ -59,6 +60,8 @@ router.post(
 
 router.put(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(updateClinicSchema, 'body'),
   async (req, res, next) => {
     try {
@@ -79,6 +82,8 @@ router.put(
 
 router.delete(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(getClinicSchema, 'params'),
   async (req, res, next) => {
     try {

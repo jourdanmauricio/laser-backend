@@ -9,7 +9,7 @@ const validatorHandler = require('./../middlewares/validator.handler');
 const { config } = require('./../config/config');
 
 const {
-  createSettingSchema,
+  // createSettingSchema,
   updateSettingSchema,
 } = require('./../schemas/setting.schema');
 
@@ -24,72 +24,70 @@ const router = express.Router();
 const service = new SettingService();
 const postService = new PostService();
 
-const multer = require('multer');
+// const multer = require('multer');
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/images');
-  },
-  filename: function (req, file, cb) {
-    // cb(null, file.fieldname, +'-' + Date.now());
-    // cb(null, `${Date.now()}-${file.originalname}`);
-    cb(null, file.originalname);
-  },
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'public/images');
+//   },
+//   filename: function (req, file, cb) {
+//     // cb(null, file.fieldname, +'-' + Date.now());
+//     // cb(null, `${Date.now()}-${file.originalname}`);
+//     cb(null, file.originalname);
+//   },
+// });
+
+// const upload = multer({ storage: storage });
+
+router.get('/', async (req, res, next) => {
+  try {
+    const settings = await service.find();
+    res.json(settings);
+  } catch (error) {
+    next(error);
+  }
 });
 
-const upload = multer({ storage: storage });
+// router.post(
+//   '/',
+//   passport.authenticate('jwt', { session: false }),
+//   checkAdminRole,
+//   validatorHandler(createSettingSchema, 'body'),
+//   async (req, res, next) => {
+//     try {
+//       const body = req.body;
+//       const newCategory = await service.create(body);
 
-router.get(
-  '/',
-  // passport.authenticate('jwt', { session: false }),
-  async (req, res, next) => {
-    try {
-      const settings = await service.find();
-      res.json(settings);
-    } catch (error) {
-      next(error);
-    }
-  }
-);
+//       await axios(URL_REVALIDATE, CONFIG_REVALIDATE);
 
-router.post(
-  '/',
-  passport.authenticate('jwt', { session: false }),
-  checkAdminRole,
-  validatorHandler(createSettingSchema, 'body'),
-  async (req, res, next) => {
-    try {
-      const body = req.body;
-      const newCategory = await service.create(body);
+//       res.status(201).json(newCategory);
+//     } catch (error) {
+//       next(error);
+//     }
+//   }
+// );
 
-      await axios(URL_REVALIDATE, CONFIG_REVALIDATE);
+// router.post(
+//   '/upload-file',
+//   passport.authenticate('jwt', { session: false }),
+//   checkAdminRole,
+//   upload.single('image'),
+//   async (req, res, next) => {
+//     try {
+//       const file = config.domain + 'static/images/' + req.file.originalname;
 
-      res.status(201).json(newCategory);
-    } catch (error) {
-      next(error);
-    }
-  }
-);
-
-router.post(
-  '/upload-file',
-  passport.authenticate('jwt', { session: false }),
-  checkAdminRole,
-  upload.single('image'),
-  async (req, res, next) => {
-    try {
-      const file = config.domain + 'static/images/' + req.file.originalname;
-
-      res.status(201).json({ image: file });
-      // res.status(201).json({ image: filePath });
-    } catch (error) {
-      next(error);
-    }
-  }
-);
+//       res.status(201).json({ image: file });
+//       // res.status(201).json({ image: filePath });
+//     } catch (error) {
+//       next(error);
+//     }
+//   }
+// );
 
 router.put(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(updateSettingSchema, 'body'),
   async (req, res, next) => {
     try {

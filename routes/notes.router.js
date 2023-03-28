@@ -1,6 +1,6 @@
 const express = require('express');
-// const passport = require('passport');
-// const { checkAdminRole } = require('./../middlewares/auth.handler');
+const passport = require('passport');
+const { checkAdminRole } = require('./../middlewares/auth.handler');
 
 const NoteService = require('../services/note.service');
 
@@ -14,17 +14,24 @@ const {
 const router = express.Router();
 const noteService = new NoteService();
 
-router.get('/', async (req, res, next) => {
-  try {
-    const notes = await noteService.find();
-    res.status(200).json(notes);
-  } catch (error) {
-    next(error);
+router.get(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
+  async (req, res, next) => {
+    try {
+      const notes = await noteService.find();
+      res.status(200).json(notes);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 router.post(
   '/',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(createNoteSchema, 'body'),
   async (req, res) => {
     const body = req.body;
@@ -36,6 +43,8 @@ router.post(
 
 router.put(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(updateNoteSchema, 'body'),
   async (req, res, next) => {
     try {
@@ -51,6 +60,8 @@ router.put(
 
 router.delete(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(getNoteSchema, 'params'),
   async (req, res, next) => {
     try {

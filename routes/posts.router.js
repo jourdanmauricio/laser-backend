@@ -3,7 +3,7 @@ const express = require('express');
 const passport = require('passport');
 const { checkAdminRole } = require('./../middlewares/auth.handler');
 
-const multer = require('multer');
+// const multer = require('multer');
 const { config } = require('./../config/config');
 
 const URL_REVALIDATE = `${config.apiFrontend}/revalidate`;
@@ -13,16 +13,16 @@ const CONFIG_REVALIDATE = {
   },
 };
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/images');
-  },
-  filename: function (req, file, cb) {
-    // cb(null, file.fieldname, +'-' + Date.now());
-    // cb(null, `${Date.now()}-${file.originalname}`);
-    cb(null, file.originalname);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'public/images');
+//   },
+//   filename: function (req, file, cb) {
+//     // cb(null, file.fieldname, +'-' + Date.now());
+//     // cb(null, `${Date.now()}-${file.originalname}`);
+//     cb(null, file.originalname);
+//   },
+// });
 
 const PostService = require('../services/post.service');
 
@@ -58,6 +58,8 @@ router.get('/:slug', async (req, res, next) => {
 
 router.post(
   '/',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(createPostSchema, 'body'),
   async (req, res) => {
     const body = req.body;
@@ -75,6 +77,8 @@ router.post(
 
 router.put(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(updatePostSchema, 'body'),
   async (req, res, next) => {
     try {
@@ -98,6 +102,8 @@ router.put(
 
 router.delete(
   '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAdminRole,
   validatorHandler(getPostSchema, 'params'),
   async (req, res, next) => {
     try {
@@ -109,23 +115,23 @@ router.delete(
     }
   }
 );
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
-router.post(
-  '/upload-file',
-  passport.authenticate('jwt', { session: false }),
-  checkAdminRole,
-  upload.single('image'),
-  async (req, res, next) => {
-    try {
-      const file = config.domain + 'static/images/' + req.file.originalname;
+// router.post(
+//   '/upload-file',
+//   passport.authenticate('jwt', { session: false }),
+//   checkAdminRole,
+//   upload.single('image'),
+//   async (req, res, next) => {
+//     try {
+//       const file = config.domain + 'static/images/' + req.file.originalname;
 
-      res.status(201).json({ image: file });
-      // res.status(201).json({ image: filePath });
-    } catch (error) {
-      next(error);
-    }
-  }
-);
+//       res.status(201).json({ image: file });
+//       // res.status(201).json({ image: filePath });
+//     } catch (error) {
+//       next(error);
+//     }
+//   }
+// );
 
 module.exports = router;
