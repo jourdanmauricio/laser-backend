@@ -118,6 +118,7 @@ router.put(
         `${URL_REVALIDATE}?path=/politicas-cookies`,
         CONFIG_REVALIDATE
       );
+      await axios(`${URL_REVALIDATE}?path=/contact`, CONFIG_REVALIDATE);
 
       res.status(200).json(section);
     } catch (error) {
